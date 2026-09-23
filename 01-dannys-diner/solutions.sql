@@ -32,10 +32,20 @@ ORDER BY s.customer_id;                     -- for sorting purposes
 -- ------------------------------------------------------------
 -- Q2. How many days has each customer visited the restaurant?
 -- ------------------------------------------------------------
+-- exploratory queries
+SELECT * FROM dannys_diner.sales;
+SELECT * FROM dannys_diner.members;
 
+-- final query
+SELECT 
+    s.customer_id,
+    COUNT(DISTINCT s.order_date) AS days_visited
+FROM
+    dannys_diner.sales s
+GROUP BY s.customer_id;
 
 -- ------------------------------------------------------------
--- Q3.
+-- Q3. 
 -- ------------------------------------------------------------
 
 
