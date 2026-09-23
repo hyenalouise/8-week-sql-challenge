@@ -1,0 +1,2 @@
+-- Case Study #6: Clique Bait: Solutions
+-- Run schema.sql first.

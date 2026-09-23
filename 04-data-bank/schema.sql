@@ -1,0 +1,3 @@
+-- Case Study #4: Data Bank
+-- Source: https://8weeksqlchallenge.com/case-study-4/
+-- TODO: copy the dataset setup script from the official page.

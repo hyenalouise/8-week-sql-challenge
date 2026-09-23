@@ -1,0 +1,3 @@
+-- Case Study #6: Clique Bait
+-- Source: https://8weeksqlchallenge.com/case-study-6/
+-- TODO: copy the dataset setup script from the official page.

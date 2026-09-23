@@ -1,0 +1,3 @@
+-- Case Study #2: Pizza Runner
+-- Source: https://8weeksqlchallenge.com/case-study-2/
+-- TODO: copy the dataset setup script from the official page.

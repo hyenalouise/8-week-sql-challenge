@@ -1,0 +1,2 @@
+-- Case Study #2: Pizza Runner: Solutions
+-- Run schema.sql first.

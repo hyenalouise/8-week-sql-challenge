@@ -1,0 +1,3 @@
+-- Case Study #3: Foodie-Fi
+-- Source: https://8weeksqlchallenge.com/case-study-3/
+-- TODO: copy the dataset setup script from the official page.

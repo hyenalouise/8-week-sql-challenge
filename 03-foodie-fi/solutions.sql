@@ -1,0 +1,2 @@
+-- Case Study #3: Foodie-Fi: Solutions
+-- Run schema.sql first.

@@ -1,0 +1,3 @@
+-- Case Study #8: Fresh Segments
+-- Source: https://8weeksqlchallenge.com/case-study-8/
+-- TODO: copy the dataset setup script from the official page.

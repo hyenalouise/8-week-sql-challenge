@@ -1,0 +1,3 @@
+-- Case Study #5: Data Mart
+-- Source: https://8weeksqlchallenge.com/case-study-5/
+-- TODO: copy the dataset setup script from the official page.

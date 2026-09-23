@@ -1,0 +1,3 @@
+-- Case Study #7: Balanced Tree Clothing Co.
+-- Source: https://8weeksqlchallenge.com/case-study-7/
+-- TODO: copy the dataset setup script from the official page.
