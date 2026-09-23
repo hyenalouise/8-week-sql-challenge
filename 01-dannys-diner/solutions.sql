@@ -45,9 +45,60 @@ FROM
 GROUP BY s.customer_id;
 
 -- ------------------------------------------------------------
--- Q3. 
+-- Q3. What was the first item from the menu purchased by each customer?
 -- ------------------------------------------------------------
+-- exploratory queries
+SELECT * FROM dannys_diner.sales;
+SELECT * FROM dannys_diner.menu;
+SELECT 
+    s.customer_id,                              -- one row per customer
+    m.product_name,                             -- product_name of the first item purchased by customer
+    MIN(s.order_date) AS first_order_date       -- first order date for each customer 
+FROM
+    dannys_diner.sales s                        -- one row per sale
+    LEFT JOIN dannys_diner.menu m               -- one row per menu item
+    ON s.product_id = m.product_id              -- join sales to menu to get product_name and price
+GROUP BY 
+    s.customer_id, 
+    m.product_name, 
+    s.order_date;                               -- group by customer_id, product_name, and order_date to get one row per customer and product
+    
+-- final query
+SELECT 
+    s.customer_id,                              -- one row per customer
+    m.product_name,                             -- product_name of the first item purchased by customer
+    s.order_date,                               -- first order date for each customer
+    DENSE_RANK() OVER 
+        (PARTITION BY s.customer_id 
+        ORDER BY s.order_date) 
+            AS first_order_rank    
+FROM
+    dannys_diner.sales s                        -- one row per sale
+    LEFT JOIN dannys_diner.menu m               -- one row per menu item
+    ON s.product_id = m.product_id              -- join sales to menu to get product_name      
 
+
+-- final query with CTE
+WITH ranked AS (
+  SELECT 
+    s.customer_id,                              -- one row per customer
+    m.product_name,                             -- product_name of the first item purchased by customer
+    s.order_date,                               -- first order date for each customer
+    DENSE_RANK() OVER 
+        (PARTITION BY s.customer_id 
+        ORDER BY s.order_date) 
+            AS first_order_rank    
+FROM
+    dannys_diner.sales s                        -- one row per sale
+    LEFT JOIN dannys_diner.menu m               -- one row per menu item
+    ON s.product_id = m.product_id              -- join sales to menu to get product_name      
+)
+SELECT 
+    customer_id,
+    product_name,
+    order_date
+FROM ranked
+WHERE first_order_rank = 1;
 
 -- ------------------------------------------------------------
 -- Q4.
