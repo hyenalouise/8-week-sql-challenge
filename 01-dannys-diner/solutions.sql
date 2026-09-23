@@ -3,12 +3,34 @@
 -- Full question wording: https://8weeksqlchallenge.com/case-study-1/
 
 -- ------------------------------------------------------------
--- Q1.
+-- Q1. What is the total amount each customer spent at the restaurant?
 -- ------------------------------------------------------------
+-- exploratory queries
+SELECT * FROM dannys_diner.sales;
+SELECT * FROM dannys_diner.menu;
 
+SELECT 
+    s.customer_id,
+    m.product_name,
+    m.price
+FROM
+    dannys_diner.sales s
+    LEFT JOIN dannys_diner.menu m 
+    ON s.product_id = m.product_id;
+
+-- final query
+SELECT 
+    s.customer_id,                          -- one row per customer
+    SUM(m.price) AS total_spent             -- total amount spent by customer
+FROM
+    dannys_diner.sales s
+    LEFT JOIN dannys_diner.menu m 
+    ON s.product_id = m.product_id
+GROUP BY s.customer_id                      -- group by customer_id to get one row per customer
+ORDER BY s.customer_id;                     -- for sorting purposes
 
 -- ------------------------------------------------------------
--- Q2.
+-- Q2. How many days has each customer visited the restaurant?
 -- ------------------------------------------------------------
 
 
