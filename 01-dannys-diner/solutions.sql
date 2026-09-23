@@ -101,9 +101,23 @@ FROM ranked
 WHERE first_order_rank = 1;
 
 -- ------------------------------------------------------------
--- Q4.
+-- Q4. What is the most purchased item on the menu and how many times was it purchased by all customers?
 -- ------------------------------------------------------------
+-- exploratory queries
+SELECT * FROM dannys_diner.sales;
+SELECT * FROM dannys_diner.menu;
 
+-- final query
+SELECT 
+    m.product_name,                             -- product_name of the most purchased item
+    COUNT(s.product_id) AS times_purchased      -- number of times the most purchased item
+FROM
+    dannys_diner.sales s                        -- one row per sale
+    LEFT JOIN dannys_diner.menu m               -- one row per menu item
+    ON s.product_id = m.product_id              -- join sales to menu to get product_name
+GROUP BY m.product_name                         -- group by product_name to get one row per product
+ORDER BY times_purchased DESC                   -- order by times purchased in descending order 
+LIMIT 1;
 
 -- ------------------------------------------------------------
 -- Q5.
